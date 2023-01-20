@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'adica',
 
-  projectId: 'gu8k2xiw',
+  projectId: 'x27dg0i2',
   dataset: 'production',
 
   plugins: [deskTool(), visionTool()],
