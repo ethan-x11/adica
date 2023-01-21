@@ -18,8 +18,51 @@ const style = {
     activeSubmit: `bg-[#1d9bf0] text-white`,
 }
 
-function TweetBox() {
+const TweetBox = () => {   
+    const [tweetMessage, setTweetMessage] = useState('')
     
+    const submitTweet = (event) => {
+        event.preventDefault()
+        console.log(tweetMessage)
+    }
+
+    return (
+        <div className={style.wrapper}>
+            <div className={style.tweetBoxLeft}>
+                <img src="https://thecatapi.com/api/images/get?format=src&type=gif" alt="profile image" className={style.profileImage} />
+            </div>
+            <div className={style.tweetBoxRight}>
+                <form>
+                    <textarea
+                        onChange={e => setTweetMessage(e.target.value)}
+                        value={tweetMessage}
+                        placeholder="What's happening?"
+                        className={style.inputField}
+                    />
+                    <div className={style.formLowerContainer}>
+                        <div className={style.iconsContainer}>
+                            <BsCardImage className={style.icon} />
+                            <RiFileGifLine className={style.icon} />
+                            <RiBarChartHorizontalFill className={style.icon} />
+                            <BsEmojiSmile className={style.icon} />
+                            <IoMdCalendar className={style.icon} />
+                            <MdOutlineLocationOn className={style.icon} />
+                        </div>
+                        <button
+                            type='submit'
+                            disabled={!tweetMessage}
+                            onClick={(event) => submitTweet(event)}
+                            className={`${style.submitGeneral} ${
+                            tweetMessage ? style.activeSubmit : style.inactiveSubmit
+                            }`}
+                        >
+                            Tweet
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    )
 }
 
 export default TweetBox

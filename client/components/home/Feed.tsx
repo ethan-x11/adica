@@ -1,5 +1,5 @@
 import { BsStars } from 'react-icons/bs'
-import TweetBox from './tweetBox'
+import TweetBox from './TweetBox'
 
 const style = {
     wrapper: `flex-[2] border-r border-l border-[#38444d] overflow-y-scroll`,
