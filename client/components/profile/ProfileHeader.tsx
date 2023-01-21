@@ -3,7 +3,7 @@ import { BsArrowLeftShort } from 'react-icons/bs'
 import { useRouter } from 'next/router'
 
 const style = {
-    wrapper: `border-[#38444d] border-b`,
+    wrapper: `border-[#38444d] border-b overflow-hidden`,
     header: `py-1 px-3 mt-2 flex items-center`,
     primary: `bg-transparent outline-none font-bold`,
     secondary: `text-[#8899a6] text-xs`,
@@ -20,11 +20,44 @@ const style = {
 }
 
 const ProfileHeader = () => {
+    const router = useRouter()
+
+    const isProfileImageNft = false
+    const currentAccount = '0x123sdfbsdhfhdfvhgsdbfhgdsbfhgdsbfhgsvf'
+
     return (
         <div className={style.wrapper}>
             <div className={style.header}>
-                <div onClick={() => router.push( '/' ) }>
+                <div onClick={() => router.push( '/' )} className={style.backButton}>
                     <BsArrowLeftShort />
+                </div>
+                <div className={style.details}>
+                    <div className={style.primary}>Meow</div>
+                    <div className={style.secondary}>54 Tweets</div>
+                </div>
+            </div>
+            <div className={style.coverPhotoContainer}>
+                <img src= 'https://thecatapi.com/api/images/get?format=src&type=gif' alt="cover" className={style.coverPhoto} />
+            </div>
+            <div className={style.profileImageContainer}>
+                <div className={ isProfileImageNft ? 'hex' : style.profileImage }>
+                    <img 
+                        src= 'https://thecatapi.com/api/images/get?format=src&type=gif' 
+                        alt="profile" 
+                        className={ isProfileImageNft ? style.profileImageNft : style.profileImage } 
+                    />
+                </div>
+            </div>
+            <div className={style.details}>
+                <div>
+                    <div className={style.primary}>Meow</div>
+                </div>
+                <div className={style.secondary}>
+                {currentAccount && (
+                    <>
+                        @{currentAccount.slice(0, 8)}...{currentAccount.slice(-5)}
+                    </>
+                )}
                 </div>
             </div>
             <div className={style.nav}>

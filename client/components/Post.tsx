@@ -36,7 +36,8 @@ const Post = ({
     timestamp,
     isProfileImageNft,
 }: PostProps) => {
-const [profileImageLink] = useState(avatar)
+    
+    const [profileImageLink] = useState(avatar)
 
     return (
         <div className={style.wrapper}>
