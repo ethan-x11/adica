@@ -8,6 +8,7 @@ import { FaRegListAlt, FaHashtag, FaBell } from 'react-icons/fa'
 import { CgMoreO } from 'react-icons/cg'
 import { VscTwitter } from 'react-icons/vsc'
 import { BsBookmark, BsBookmarkFill, BsPerson, BsPersonFill } from 'react-icons/bs'
+import { TfiThemifyFaviconAlt } from "react-icons/tfi";
 
 const style = {
     wrapper: `flex-[0.7] px-8 flex flex-col`,
@@ -29,7 +30,7 @@ function Sidebar({ initialSelectedIcon = 'Home' }) {
     return (
         <div className={style.wrapper}>
             <div className={style.iconContainer}>
-                <VscTwitter/>
+                <TfiThemifyFaviconAlt/>
             </div>
             <div className={style.navContainer}>
                 <SidebarOption

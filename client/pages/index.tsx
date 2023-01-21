@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Sidebar from '../components/Sidebar'
+import Feed from '../components/home/Feed'
 
 const style ={
   wrapper: `flex justify-center h-screen select-none bg-[#15202b] text-white`, //min-h-screen flex-col items-center justify-center py-2
@@ -19,7 +20,7 @@ const Home: NextPage = () => {
       <div className={style.wrapper}>
           <div className={style.content}>
             <Sidebar/>
-            <h2>Feed</h2>
+            <Feed />
             <h2>Widgets</h2>
           </div>
       </div>
