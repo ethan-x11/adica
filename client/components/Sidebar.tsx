@@ -5,7 +5,7 @@ const style = {
     wrapper: `flex-[0.7] px-8 flex flex-col`,
     iconContainer: `text-3xl m-4`,
     button: `bg-[#1d9bf0] hover:bg-[#1b8cd8] flex items-center justify-center font-bold rounded-3xl h-[50px] mt-[20px] cursor-pointer`,
-    navContainer: `flex-1 text-left`,
+    navContainer: `flex-1`,
     profileButton: `flex items-center mb-6 cursor-pointer hover:bg-[#333c45] rounded-[100px] p-2`,
     profileLeft: `flex item-center justify-center mr-4`,
     profileImage: `height-12 w-12 rounded-full`,
@@ -32,6 +32,18 @@ function Sidebar() {
                 <div>Profile</div>
                 <div>More</div>
                 <div className={style.button}>Mint</div>
+            </div>
+            <div className={style.profileButton}>
+                <div className={style.profileLeft}></div>
+                <div className={style.profileRight}>    
+                    <div className={style.details}>
+                        <div className={style.name}>Name</div>
+                        <div className={style.handle}>@handle</div>
+                    </div>
+                    <div className={style.moreContainer}>
+                        <FiMoreHorizontal/>
+                    </div>
+                </div>
             </div>
         </div>
     )
