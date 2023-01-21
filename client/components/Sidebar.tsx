@@ -1,5 +1,13 @@
-import { FiMoreHorizontal } from 'react-icons/fi'
+import { useState, useContext } from 'react'
+import SidebarOption from './SidebarOption'
+import { RiHome7Line, RiHome7Fill, RiFileList2Fill } from 'react-icons/ri'
+import { BiHash } from 'react-icons/bi'
+import { FiBell, FiMoreHorizontal } from 'react-icons/fi'
+import { HiOutlineMail, HiMail } from 'react-icons/hi'
+import { FaRegListAlt, FaHashtag, FaBell } from 'react-icons/fa'
+import { CgMoreO } from 'react-icons/cg'
 import { VscTwitter } from 'react-icons/vsc'
+import { BsBookmark, BsBookmarkFill, BsPerson, BsPersonFill } from 'react-icons/bs'
 
 const style = {
     wrapper: `flex-[0.7] px-8 flex flex-col`,
@@ -16,23 +24,73 @@ const style = {
     moreContainer: `flex items-center mr-2`,
 }
 
-function Sidebar() {
+function Sidebar({ initialSelectedIcon = 'Home' }) {
+    const [selected, setSelected] = useState(initialSelectedIcon)
     return (
         <div className={style.wrapper}>
             <div className={style.iconContainer}>
                 <VscTwitter/>
             </div>
             <div className={style.navContainer}>
-                <div>Home</div>
-                <div>Explore</div>
-                <div>Notifications</div>
-                <div>Messages</div>
-                <div>Bookmarks</div>
-                <div>Lists</div>
-                <div>Profile</div>
-                <div>More</div>
+                <SidebarOption
+                    Icon={selected === 'Home' ? RiHome7Fill : RiHome7Line }
+                    text='Home'
+                    isActive={Boolean(selected === 'Home')}
+                    setSelected={setSelected}
+                    redirect={'/'}
+                />
+                <SidebarOption
+                    Icon={selected === 'Explore' ? FaHashtag : BiHash}
+                    text='Explore'
+                    isActive={Boolean(selected === 'Explore')}
+                    setSelected={setSelected}
+                    redirect={'/explore'}
+                />
+                <SidebarOption
+                    Icon={selected === 'Notifications' ? FaBell : FiBell}
+                    text='Notifications'
+                    isActive={Boolean(selected === 'Notifications')}
+                    setSelected={setSelected}
+                    redirect={'/notifications'}
+                />
+                <SidebarOption
+                    Icon={selected === 'Messages' ? HiMail : HiOutlineMail}
+                    text='Messages'
+                    isActive={Boolean(selected === 'Messages')}
+                    setSelected={setSelected}
+                    redirect={'/messages'}
+                />
+                <SidebarOption
+                    Icon={selected === 'Bookmarks' ? BsBookmarkFill : BsBookmark}
+                    text='Bookmarks'
+                    isActive={Boolean(selected === 'Bookmarks')}
+                    setSelected={setSelected}
+                    redirect={'/bookmarks'}
+                />
+                <SidebarOption
+                    Icon={selected === 'Lists' ? RiFileList2Fill : FaRegListAlt}
+                    text='Lists'
+                    isActive={Boolean(selected === 'Lists')}
+                    setSelected={setSelected}
+                    redirect={'/lists'}
+                />
+                <SidebarOption
+                    Icon={selected === 'Profile' ? BsPersonFill : BsPerson}
+                    text='Profile'
+                    isActive={Boolean(selected === 'Profile')}
+                    setSelected={setSelected}
+                    redirect={'/profile'}
+                />
+                <SidebarOption 
+                    Icon={CgMoreO} 
+                    text='More'
+                    isActive={Boolean(selected === 'More')}
+                    setSelected={setSelected}
+                    redirect={'/more'} 
+                />
                 <div className={style.button}>Mint</div>
             </div>
+            
             <div className={style.profileButton}>
                 <div className={style.profileLeft}></div>
                 <div className={style.profileRight}>    
