@@ -6,7 +6,7 @@ import Feed from '../components/home/Feed'
 import Widgets from '../components/Widgets'
 
 const style ={
-  wrapper: `flex justify-center h-screen select-none bg-[#15202b] text-white`, //min-h-screen flex-col items-center justify-center py-2
+  wrapper: `flex justify-center h-screen select-none bg-[#15202b] text-white `,
   content: `max-w-[1400px] w-2/3 flex justify-between`
 }
 
@@ -14,13 +14,13 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Meow</title>
+        <title>Adica</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
       <div className={style.wrapper}>
           <div className={style.content}>
-            <Sidebar/>
+            <Sidebar/>  
             <Feed />
             <Widgets />
           </div>

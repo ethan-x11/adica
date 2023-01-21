@@ -1,5 +1,6 @@
 import { news, whoToFollow } from '../lib/static'
 import { BiSearch } from 'react-icons/bi'
+import { FiMoreHorizontal } from 'react-icons/fi'
 
 const style = {
     wrapper: `flex-[1] p-4`, //overflow-y-scroll
@@ -39,11 +40,7 @@ function Widgets() {
                                 <div className={style.newsItemTitle}>{item.title}</div>
                             </div>
                             <div className={style.newsItemRight}>
-                                <img
-                                    src={item.image}
-                                    alt={item.category}
-                                    className={style.newsItemImage}
-                                />
+                            <FiMoreHorizontal/>
                             </div>
                         </div>
                     ))}
