@@ -1,5 +1,7 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useState, useContext } from 'react'
+import { Context } from '../context/Context'
 import SidebarOption from './SidebarOption'
 import { RiHome7Line, RiHome7Fill, RiFileList2Fill } from 'react-icons/ri'
 import { BiHash } from 'react-icons/bi'
@@ -10,6 +12,8 @@ import { CgMoreO } from 'react-icons/cg'
 import { VscTwitter } from 'react-icons/vsc'
 import { BsBookmark, BsBookmarkFill, BsPerson, BsPersonFill } from 'react-icons/bs'
 import { TfiThemifyFaviconAlt } from "react-icons/tfi";
+import { customStyles } from '../lib/constants'
+
 
 const style = {
     wrapper: `flex-[0.7] px-8 flex flex-col`,
