@@ -22,41 +22,39 @@ const style = {
 
 function TweetBox() {
     const [tweetMessage, setTweetMessage] = useState('')
-    const { currentAccount, fetchTweets, currentUser } = 
-    
-    useContext(Context)
+    const { currentAccount, fetchTweets, currentUser } = useContext(Context)
 
     const submitTweet = async (event: any) => {
         event.preventDefault()
 
-    if (!tweetMessage) return 
-        const tweetId = `${currentAccount}_${Date.now()}`
+        if (!tweetMessage) return 
+            const tweetId = `${currentAccount}_${Date.now()}`
 
-    const tweetDoc = {
-        _type: 'tweets',
-        _id: tweetId,
-        tweet: tweetMessage,
-        timestamp: new Date(Date.now()).toISOString(),
-        author: {
-            _key: tweetId,
-            _ref: currentAccount,
-            _type: 'reference',
-        },
-    }
-
-    await client.createIfNotExists(tweetDoc)
-
-    await client
-        .patch(currentAccount)
-        .setIfMissing({ tweets: [] })
-        .insert('after', 'tweets[-1]', [
-            {
-            _key: tweetId,
-            _ref: tweetId,
-            _type: 'reference',
+        const tweetDoc = {
+            _type: 'tweets',
+            _id: tweetId,
+            tweet: tweetMessage,
+            timestamp: new Date(Date.now()).toISOString(),
+            author: {
+                _key: tweetId,
+                _ref: currentAccount,
+                _type: 'reference',
             },
-        ])
-        .commit()
+        }
+
+        await client.createIfNotExists(tweetDoc)
+
+        await client
+            .patch(currentAccount)
+            .setIfMissing({ tweets: [] })
+            .insert('after', 'tweets[-1]', [
+                {
+                _key: tweetId,
+                _ref: tweetId,
+                _type: 'reference',
+                },
+            ])
+            .commit()
 
         await fetchTweets()
         setTweetMessage('')

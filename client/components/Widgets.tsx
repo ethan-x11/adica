@@ -29,7 +29,11 @@ function Widgets() {
         <div className={style.wrapper}>
             <div className={style.searchBar}>
                 <BiSearch className={style.searchIcon} />
-                <input placeholder='Search Twitter' type='text' className={style.inputBox}/>
+                <input
+                    placeholder='Search Twitter'
+                    type='text'
+                    className={style.inputBox}
+                />
             </div>
             <div className={style.section}>
                 <div className={style.title}>What's happening</div>
@@ -40,14 +44,18 @@ function Widgets() {
                                 <div className={style.newsItemTitle}>{item.title}</div>
                             </div>
                             <div className={style.newsItemRight}>
-                            <FiMoreHorizontal/>
+                                <img
+                                    src={item.image}
+                                    alt={item.category}
+                                    className={style.newsItemImage}
+                                />
                             </div>
                         </div>
                     ))}
-                    <div className={style.showMore}>Show more</div>
-                </div>
-                <div className={style.section}>
-                    <div className={style.title}>Who to follow</div>
+                <div className={style.showMore}>Show more</div>
+            </div>
+            <div className={style.section}>
+                <div className={style.title}>Who to follow</div>
                     {whoToFollow.map((item, index) => (
                         <div key={index} className={style.item}>
                             <div className={style.followAvatarContainer}>
@@ -68,6 +76,6 @@ function Widgets() {
             </div>
         </div>
     )
-}
+}  
 
 export default Widgets
