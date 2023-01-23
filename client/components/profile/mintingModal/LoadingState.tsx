@@ -16,7 +16,7 @@ const LoadingState = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.title}>Minting in progress...</div>
-      <GridLoader color={'#fff'} loading={true} css={cssOverride} size={30} />
+      <GridLoader color={'#fff'} loading={true} size={30} />
     </div>
   )
 }

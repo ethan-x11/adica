@@ -1,11 +1,13 @@
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import Image from 'next/image'
+import Sidebar from '../components/Sidebar'
+import Feed from '../components/home/Feed'
+import Widgets from '../components/Widgets'
 import { useContext } from 'react'
 import { Context } from '../context/Context'
-import Feed from '../components/home/Feed'
-import Sidebar from '../components/Sidebar'
-import Widgets from '../components/Widgets'
 import metamaskLogo from '../assets/metamask.png'
 import errorImg from '../assets/error.png'
-import Image from 'next/image'
 
 const style = {
   wrapper: `flex justify-center h-screen w-screen select-none bg-[#15202b] text-white`,
@@ -15,7 +17,8 @@ const style = {
   loginContent: `text-3xl font-bold text-center mt-24`,
 }
 
-const Home = () => {
+const Home: NextPage = () => {
+
   const { appStatus, connectWallet } = useContext(Context)
 
   const app = (status = appStatus) => {
@@ -88,8 +91,28 @@ const Home = () => {
       <div className={style.loginContent}>Loading...</div>
     </div>
   )
+  return (
+    <div>
+      <Head>
+        <title>Adica</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      
+      <div className={style.wrapper}>{app(appStatus)}</div>
 
-  return <div className={style.wrapper}>{app(appStatus)}</div>
+      {/* <footer className="flex h-24 w-full items-center justify-center border-t">
+        <a
+          className="flex items-center justify-center gap-2"
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Made by{' '}
+          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+        </a>
+      </footer> */}
+    </div>
+  )
 }
 
 export default Home
