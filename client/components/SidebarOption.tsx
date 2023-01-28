@@ -9,7 +9,7 @@ const style = {
     textActive: `font-bold`,
 }
 
-interface SidebarOptionProps {
+interface SidebarOptionProps {  
     text: String
     Icon: IconType
     isActive?: Boolean
